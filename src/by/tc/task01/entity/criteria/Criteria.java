@@ -12,6 +12,11 @@ public class Criteria {
 		this.groupSearchName = groupSearchName;
 	}
 	
+	public Criteria(String groupSearchName,Map<String, Object> criteria) {
+		this.groupSearchName = groupSearchName;
+		this.criteria = criteria;
+	}
+	
 	public String getGroupSearchName() {
 		return groupSearchName;
 	}

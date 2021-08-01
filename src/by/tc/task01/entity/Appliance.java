@@ -14,9 +14,17 @@ public class Appliance {//???????
 		this.parametrs = parametrs;
 	}
 	
-	public String toLine() {
-		String result = this.getClass().getSimpleName() + " : " + parametrs.toString().replace("{", "").replace("}", "") ;
+	public Map<String, Object> getParametrs() {
+		return this.parametrs;
+	}
+	
+	public String getClassName() {
+		return this.getClass().getSimpleName();
+	}
+	
+	/*public String toLine() {
+		String result = this.getClass().getSimpleName() + " : " + this.parametrs.toString().replace("{", "").replace("}", "") ;
 		System.out.println(result);
 		return result;
-	}
+	}*/
 }

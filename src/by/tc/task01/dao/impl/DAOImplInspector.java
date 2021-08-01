@@ -27,7 +27,7 @@ public class DAOImplInspector {
 		System.out.println(apps.size());
 		
 		Appliance ovenToRemove = new Oven(1500, 12, 33, 60, 45, 68);
-		//System.out.println(ovenToRemove.toLine());
+		System.out.println(ovenToRemove.getParametrs().toString());
 		appDAO.remove(ovenToRemove);
 		
 		
