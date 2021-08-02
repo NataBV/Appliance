@@ -15,7 +15,7 @@ import by.tc.task01.entity.criteria.SearchCriteria.TabletPC;
 public class DAOImplInspector {
 
 	public static void main(String[] args) {
-		Criteria criteriaTabletPC = new Criteria(TabletPC.class.getSimpleName());
+		/*Criteria criteriaTabletPC = new Criteria(TabletPC.class.getSimpleName());
 		criteriaTabletPC.add(TabletPC.COLOR.toString(), "BLUE");
 		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES.toString(), 14);
 		criteriaTabletPC.add(TabletPC.MEMORY_ROM.toString(), 8000);
@@ -28,7 +28,7 @@ public class DAOImplInspector {
 		
 		Appliance ovenToRemove = new Oven(1500, 12, 33, 60, 45, 68);
 		System.out.println(ovenToRemove.getParametrs().toString());
-		appDAO.remove(ovenToRemove);
+		appDAO.remove(ovenToRemove);*/
 		
 		
 	}

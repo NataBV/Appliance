@@ -1,16 +1,20 @@
 package by.tc.task01.main;
 
+
 import static by.tc.task01.entity.criteria.SearchCriteria.*;
+
+import java.util.List;
 
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.service.ApplianceService;
+import by.tc.task01.service.ServiceException;
 import by.tc.task01.service.ServiceFactory;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Appliance appliance;
+	public static void main(String[] args) throws ServiceException {
+		List<Appliance> appliance;
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		ApplianceService service = factory.getApplianceService();
@@ -18,11 +22,12 @@ public class Main {
 		//////////////////////////////////////////////////////////////////
 
 		Criteria criteriaOven = new Criteria(Oven.class.getSimpleName());//"Oven"
-		criteriaOven.add(Oven.CAPACITY.toString(), 3);
+		criteriaOven.add(Oven.CAPACITY.toString(), 32);
 
 		appliance = service.find(criteriaOven);
 
-		PrintApplianceInfo.print(appliance);
+		//PrintApplianceInfo.print(appliance); // TODO add print
+		System.out.println(appliance.size() + appliance.toString());
 
 		//////////////////////////////////////////////////////////////////
 
@@ -32,18 +37,26 @@ public class Main {
 
 		appliance = service.find(criteriaOven);
 
-		PrintApplianceInfo.print(appliance);
+		//PrintApplianceInfo.print(appliance); // TODO add print
+		System.out.println(appliance.size());
 
 		//////////////////////////////////////////////////////////////////
 		
 		Criteria criteriaTabletPC = new Criteria(TabletPC.class.getSimpleName());
 		criteriaTabletPC.add(TabletPC.COLOR.toString(), "BLUE");
 		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES.toString(), 14);
-		criteriaTabletPC.add(TabletPC.MEMORY_ROM.toString(), 4);
+		criteriaTabletPC.add(TabletPC.MEMORY_ROM.toString(), 8000);
 
 		appliance = service.find(criteriaOven);// find(Object...obj)
 
-		PrintApplianceInfo.print(appliance);
+		//PrintApplianceInfo.print(appliance); // TODO add print
+		System.out.println(appliance.size());
+		
+		/////////////////////////////////////////////
+		//TODO check class calling?
+		Appliance ovenToRemove = new by.tc.task01.entity.Oven(1500, 12, 33, 60, 45, 68);
+		System.out.println(ovenToRemove.getParametrs().toString());
+		service.remove(ovenToRemove);
 
 	}
 
