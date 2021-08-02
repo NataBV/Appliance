@@ -47,8 +47,8 @@ public class FileApplianceDAO implements ApplianceDAO{
 		    		} 
 		    		System.out.println(allCriterias);
 		    		if (allCriterias) {
-		    			Appliance tmpResult = new Appliance(details);
-		      			resultOfFind.add(tmpResult); 
+		    			Appliance tmpResult = new Appliance(details);  
+		      			resultOfFind.add(tmpResult); //TODO need new idea!?
 		    		} 
 		    	}		                 
 		    }

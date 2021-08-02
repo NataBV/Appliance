@@ -4,7 +4,7 @@ import java.util.*;
 
 import by.tc.task01.entity.criteria.SearchCriteria;
 
-public class Oven extends Appliance{
+public class Oven implements Appliance{
 	
 	private int powerCon, weight, capacity, depth;
 	private double height, width;
@@ -48,6 +48,66 @@ public class Oven extends Appliance{
 		
 		return parametrs;
 	}
+	
+	/*@Override
+	public String toLine() {
+		String result = this.getClass().getSimpleName() + " : " + this.parametrs.toString().replace("{", "").replace("}", "") ;
+		System.out.println(result);
+		return result;
+	}*/
+	
+	@Override
+	public String getClassName() {
+		return this.getClass().getSimpleName();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + capacity;
+		result = prime * result + depth;
+		long temp;
+		temp = Double.doubleToLongBits(height);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + powerCon;
+		result = prime * result + weight;
+		temp = Double.doubleToLongBits(width);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Oven other = (Oven) obj;
+		if (capacity != other.capacity)
+			return false;
+		if (depth != other.depth)
+			return false;
+		if (Double.doubleToLongBits(height) != Double.doubleToLongBits(other.height))
+			return false;
+		if (powerCon != other.powerCon)
+			return false;
+		if (weight != other.weight)
+			return false;
+		if (Double.doubleToLongBits(width) != Double.doubleToLongBits(other.width))
+			return false;
+		return true;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Oven [powerCon=" + powerCon + ", weight=" + weight + ", capacity=" + capacity + ", depth=" + depth
+				+ ", height=" + height + ", width=" + width + "]";
+	}
+	
 	
 	
 }
