@@ -6,6 +6,10 @@ import java.util.Map;
 public class Speakers implements Appliance{
 	// add variables, hash, equals and toString
 	
+	public Speakers(Map<String, Object> speakersDetails) { 
+		
+	}
+	
 		@Override
 		public Map<String, Object> getParametrs() {
 			Map<String, Object> parametrs = new HashMap<String, Object>();

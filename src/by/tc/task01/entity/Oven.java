@@ -25,7 +25,18 @@ public class Oven implements Appliance{
 		this.height = height;
 		this.width = width;
 		
-	}	
+	}
+	
+	public Oven(Map<String, Object> ovenDetails) { 	
+		
+		this.powerCon = (int)ovenDetails.get(SearchCriteria.Oven.POWER_CONSUMPTION.toString());
+		this.weight = (int)ovenDetails.get(SearchCriteria.Oven.WEIGHT.toString());
+		this.capacity = (int)ovenDetails.get(SearchCriteria.Oven.CAPACITY.toString());
+		this.depth = (int)ovenDetails.get(SearchCriteria.Oven.DEPTH.toString());
+		this.height = (double)ovenDetails.get(SearchCriteria.Oven.HEIGHT.toString());
+		this.width = (double)ovenDetails.get(SearchCriteria.Oven.WIDTH.toString());
+		
+	}
 	
 	@Override
 	public Map<String, Object> getParametrs() {

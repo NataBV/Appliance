@@ -22,7 +22,7 @@ public class Main {
 		//////////////////////////////////////////////////////////////////
 
 		Criteria criteriaOven = new Criteria(Oven.class.getSimpleName());//"Oven"
-		criteriaOven.add(Oven.CAPACITY.toString(), 32);
+		criteriaOven.add(Oven.CAPACITY.toString(), 33);
 
 		appliance = service.find(criteriaOven);
 

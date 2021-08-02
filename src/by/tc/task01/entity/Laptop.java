@@ -6,6 +6,10 @@ import java.util.Map;
 public class Laptop implements Appliance{
 	// add variables, hash, equals and toString
 	
+	public Laptop(Map<String, Object> laptopDetails) { 
+		
+	}
+	
 	@Override
 	public Map<String, Object> getParametrs() {
 		Map<String, Object> parametrs = new HashMap<String, Object>();
