@@ -6,9 +6,6 @@ import java.util.Map;
 import by.tc.task01.entity.criteria.SearchCriteria;
 
 public class Laptop implements Appliance{
-	// add variables, hash, equals and toString
-	// BATTERY_CAPACITY=1, OS=Windows, MEMORY_ROM=4000, SYSTEM_MEMORY=1000,
-	//CPU=1.2, DISPLAY_INCHS=18
 	
 	private int battCapacity, memoryRoom, sysMemory, dispInchs;
 	private double cpu;
@@ -52,7 +49,8 @@ public class Laptop implements Appliance{
 	
 	/*@Override
 	public String toLine() {
-		String result = this.getClass().getSimpleName() + " : " + this.parametrs.toString().replace("{", "").replace("}", "") ;
+		String result = this.getClass().getSimpleName() + " : "
+		 + this.parametrs.toString().replace("{", "").replace("}", "") ;
 		System.out.println(result);
 		return result;
 	}*/
@@ -66,8 +64,9 @@ public class Laptop implements Appliance{
 	
 	@Override
 	public String toString() {
-		return "Laptop [battCapacity=" + battCapacity + ", memoryRoom=" + memoryRoom + ", sysMemory=" + sysMemory
-				+ ", dispInchs=" + dispInchs + ", cpu=" + cpu + ", os=" + os + "]";
+		return "Laptop [battCapacity=" + battCapacity + ", memoryRoom="
+				+ memoryRoom + ", sysMemory=" + sysMemory + ", dispInchs="
+				+ dispInchs + ", cpu=" + cpu + ", os=" + os + "]";
 	}
 
 	@Override
