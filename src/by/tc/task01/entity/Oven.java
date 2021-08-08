@@ -6,12 +6,13 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 
 public class Oven implements Appliance{
 	
-	private int powerCon, weight, capacity, depth;
-	private double height, width;
+	private String powerCon, weight, capacity, depth, height, width;
 	
-	public Oven(int powerCon, int weight, int capacity,
-			int depth, double height, double width) { 	
-		
+	
+	
+	public Oven(String powerCon, String weight, String capacity,
+			String depth, String height, String width) {
+
 		this.powerCon = powerCon;
 		this.weight = weight;
 		this.capacity = capacity;
@@ -20,15 +21,15 @@ public class Oven implements Appliance{
 		this.width = width;
 		
 	}
-	
+
 	public Oven(Map<String, Object> ovenDetails) { 	
 		
-		this.powerCon = (int)ovenDetails.get(SearchCriteria.Oven.POWER_CONSUMPTION.toString());
-		this.weight = (int)ovenDetails.get(SearchCriteria.Oven.WEIGHT.toString());
-		this.capacity = (int)ovenDetails.get(SearchCriteria.Oven.CAPACITY.toString());
-		this.depth = (int)ovenDetails.get(SearchCriteria.Oven.DEPTH.toString());
-		this.height = (double)ovenDetails.get(SearchCriteria.Oven.HEIGHT.toString());
-		this.width = (double)ovenDetails.get(SearchCriteria.Oven.WIDTH.toString());
+		this.powerCon = (String)ovenDetails.get(SearchCriteria.Oven.POWER_CONSUMPTION.toString());
+		this.weight = (String)ovenDetails.get(SearchCriteria.Oven.WEIGHT.toString());
+		this.capacity = (String)ovenDetails.get(SearchCriteria.Oven.CAPACITY.toString());
+		this.depth = (String)ovenDetails.get(SearchCriteria.Oven.DEPTH.toString());
+		this.height = (String)ovenDetails.get(SearchCriteria.Oven.HEIGHT.toString());
+		this.width = (String)ovenDetails.get(SearchCriteria.Oven.WIDTH.toString());
 		
 	}
 	
@@ -39,17 +40,8 @@ public class Oven implements Appliance{
 		parametrs.put("WEIGHT", weight);
 		parametrs.put("CAPACITY", capacity);
 		parametrs.put("DEPTH", depth);
-		if ((height % 1) == 0) {
-			
-			parametrs.put("HEIGHT", (int)height);
-		} else {
-			parametrs.put("HEIGHT", height);
-		}
-		if ((width % 1) == 0) {
-			parametrs.put("WIDTH", (int)width);
-		} else {
-			parametrs.put("WIDTH", width);
-		}
+		parametrs.put("HEIGHT", height);
+		parametrs.put("WIDTH", width);
 		
 		return parametrs;
 	}
@@ -59,19 +51,19 @@ public class Oven implements Appliance{
 		return this.getClass().getSimpleName();
 	}
 
+	
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + capacity;
-		result = prime * result + depth;
-		long temp;
-		temp = Double.doubleToLongBits(height);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + powerCon;
-		result = prime * result + weight;
-		temp = Double.doubleToLongBits(width);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((capacity == null) ? 0 : capacity.hashCode());
+		result = prime * result + ((depth == null) ? 0 : depth.hashCode());
+		result = prime * result + ((height == null) ? 0 : height.hashCode());
+		result = prime * result + ((powerCon == null) ? 0 : powerCon.hashCode());
+		result = prime * result + ((weight == null) ? 0 : weight.hashCode());
+		result = prime * result + ((width == null) ? 0 : width.hashCode());
 		return result;
 	}
 
@@ -84,22 +76,39 @@ public class Oven implements Appliance{
 		if (getClass() != obj.getClass())
 			return false;
 		Oven other = (Oven) obj;
-		if (capacity != other.capacity)
+		if (capacity == null) {
+			if (other.capacity != null)
+				return false;
+		} else if (!capacity.equals(other.capacity))
 			return false;
-		if (depth != other.depth)
+		if (depth == null) {
+			if (other.depth != null)
+				return false;
+		} else if (!depth.equals(other.depth))
 			return false;
-		if (Double.doubleToLongBits(height) != Double.doubleToLongBits(other.height))
+		if (height == null) {
+			if (other.height != null)
+				return false;
+		} else if (!height.equals(other.height))
 			return false;
-		if (powerCon != other.powerCon)
+		if (powerCon == null) {
+			if (other.powerCon != null)
+				return false;
+		} else if (!powerCon.equals(other.powerCon))
 			return false;
-		if (weight != other.weight)
+		if (weight == null) {
+			if (other.weight != null)
+				return false;
+		} else if (!weight.equals(other.weight))
 			return false;
-		if (Double.doubleToLongBits(width) != Double.doubleToLongBits(other.width))
+		if (width == null) {
+			if (other.width != null)
+				return false;
+		} else if (!width.equals(other.width))
 			return false;
 		return true;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Oven [powerCon=" + powerCon + ", weight=" + weight + ", capacity="

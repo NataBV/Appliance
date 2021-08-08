@@ -7,6 +7,6 @@ import by.tc.task01.entity.criteria.Criteria;
 
 public interface ApplianceDAO {
 	List<Appliance> find(Criteria criteria) throws DAOException;
-	boolean add(Appliance appliance) throws DAOException;
-	void remove (Appliance appliance) throws DAOException;
+	void add(Criteria criteria) throws DAOException;
+	void remove (Criteria criteria) throws DAOException;
 }

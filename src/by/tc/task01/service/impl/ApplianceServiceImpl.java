@@ -37,8 +37,8 @@ public class ApplianceServiceImpl implements ApplianceService{
 	}
 	
 	@Override
-	public void remove(Appliance applianceToREmove) throws ServiceException {
-		if (!Validator.criteriaValidator(applianceToREmove)) { //TODO body
+	public void remove(Criteria criteriaToRemove) throws ServiceException {
+		if (!Validator.criteriaValidator(criteriaToRemove)) { 
 			return;
 		}
 		
@@ -46,7 +46,7 @@ public class ApplianceServiceImpl implements ApplianceService{
 		ApplianceDAO applianceDAO = factory.getApplianceDAO();
 		
 		try {
-			applianceDAO.remove(applianceToREmove);
+			applianceDAO.remove(criteriaToRemove);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
@@ -54,22 +54,20 @@ public class ApplianceServiceImpl implements ApplianceService{
 	}
 	
 	@Override
-	public boolean add(Appliance applianceToAdd) throws ServiceException {
-		boolean result = true;
-		if (!Validator.criteriaValidator(applianceToAdd)) { //TODO body
-			return false;
+	public void add(Criteria criteriaToAdd) throws ServiceException {
+		if (!Validator.criteriaValidator(criteriaToAdd)) { //TODO body
+			return;
 		}
 		
 		DAOFactory factory = DAOFactory.getInstance();
 		ApplianceDAO applianceDAO = factory.getApplianceDAO();
 		
 		try {
-			result = applianceDAO.add(applianceToAdd);
+			applianceDAO.add(criteriaToAdd);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		
-		return result;	
+	
 	}
 	
 }

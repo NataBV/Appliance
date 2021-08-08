@@ -6,6 +6,7 @@ import by.tc.task01.controller.Command;
 import by.tc.task01.controller.util.RequestUtil;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
+import by.tc.task01.main.PrintApplianceInfo;
 import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.ServiceException;
 import by.tc.task01.service.ServiceFactory;
@@ -30,9 +31,9 @@ public class FindApplianceCommand implements Command {
 			List<Appliance> result = service.find(criteria);
 			int i = result.size();
 			if (result.size() > 0) {
-				response = "OK - " + result.toString();
+				response = "OK \n" + PrintApplianceInfo.printList(result);
 			}else {
-				response = "Sorry - But we don't have what you want.";
+				response = "Sorry - But we don't have what you want. \n";
 			}
 		} catch (ServiceException e) {
 			// log
