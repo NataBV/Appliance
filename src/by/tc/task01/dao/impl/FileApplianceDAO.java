@@ -25,23 +25,22 @@ public class FileApplianceDAO implements ApplianceDAO{
 		    	if (!textLine.equals("")) {
 		    		Criteria criteriaFromFile = createCriteriaFromLine(textLine);
 			    	
-			    	 if (criteriaFromFile.getGroupSearchName().equals(criteria.getGroupSearchName())) {
+			    	 if (criteriaFromFile.getGroupSearchName().equalsIgnoreCase(criteria.getGroupSearchName())) {
 			    		 
-			    		Set s1 = criteriaFromFile.getCriterias().entrySet();
-			    		Set set = criteria.getCriterias().entrySet();
-			    		Iterator s2 = set.iterator();
+			    		Set criteriaFromFileSet = criteriaFromFile.getCriterias().entrySet();
+			    		Set criteriaSet = criteria.getCriterias().entrySet();
+			    		Iterator criteriaSetIterator = criteriaSet.iterator();
 			    		
 			    		boolean allCriterias = true;
-			    		while (s2.hasNext()) {
-			    			if (!(s1.contains(s2.next()))) {
+			    		while (criteriaSetIterator.hasNext()) {
+			    			if (!(criteriaFromFileSet.contains(criteriaSetIterator.next()))) {
 				     			allCriterias = false;
 				     			break;
 			    			}
 			    		} 
 			    		System.out.println(allCriterias);
 			    		if (allCriterias) {
-			    			Map<String, Object> appDetails = criteriaFromFile.getCriterias();
-			    			Appliance tmpResult = new AppliancesProvider(appDetails).createAppliance(criteriaFromFile);  
+			    			Appliance tmpResult = new AppliancesProvider(criteriaFromFile).createAppliance();  
 			      			resultOfFind.add(tmpResult); 
 			    		} 
 			    	}
@@ -129,7 +128,6 @@ public class FileApplianceDAO implements ApplianceDAO{
 		    while((textLine = bReader.readLine()) != null){
 		    	if (!textLine.equals("")) {
 		    		boolean allCriteriasMapped = compareAppliances(textLine,  criteria);
-			    	//System.out.println(allCriteriasMapped);
 			    	if (!allCriteriasMapped) {
 			    		bWriter.write(textLine + "\n");	
 			    	}
@@ -180,18 +178,16 @@ public class FileApplianceDAO implements ApplianceDAO{
 		String[] arrOfDetails = titleAndDetails[1].split(", "); 
 		for(String entiry: arrOfDetails) {
 			String[] detElement = entiry.split("=");
-			//criteriaFromFile.add(detElement[0].trim(), detElement[1].trim());
-			try {
-				int num = Integer.parseInt(detElement[1].trim());
-				criteriaFromFile.add(detElement[0].trim(), num);
-			} catch(NumberFormatException e) {
-				try {
-					double num2 = Double.parseDouble(detElement[1].trim());
-					criteriaFromFile.add(detElement[0].trim(), num2);
-				} catch(NumberFormatException ex) {
-					criteriaFromFile.add(detElement[0].trim(), detElement[1].trim());
-				}
-			}
+			criteriaFromFile.add(detElement[0].trim(), detElement[1].trim());
+			/*
+			 * try { int num = Integer.parseInt(detElement[1].trim());
+			 * criteriaFromFile.add(detElement[0].trim(), num); }
+			 * catch(NumberFormatException e) { try { double num2 =
+			 * Double.parseDouble(detElement[1].trim());
+			 * criteriaFromFile.add(detElement[0].trim(), num2); }
+			 * catch(NumberFormatException ex) { criteriaFromFile.add(detElement[0].trim(),
+			 * detElement[1].trim()); } }
+			 */
 		}
 
 		return criteriaFromFile;

@@ -9,24 +9,37 @@ import by.tc.task01.entity.criteria.Criteria;
 
 public class AppliancesProvider {
 	
-	private Map<ApplianceNames, Appliance> appliances = new HashMap<>();
+	private Appliance appliance;
 	
-	public AppliancesProvider(Map<String, Object> appDetails) {
-		appliances.put(ApplianceNames.LAPTOP, new Laptop(appDetails));
-		appliances.put(ApplianceNames.OVEN, new Oven(appDetails));
-		appliances.put(ApplianceNames.REFREGERATOR, new Refrigerator(appDetails));
-		appliances.put(ApplianceNames.SPEAKERS, new Speakers(appDetails));
-		appliances.put(ApplianceNames.TABLETPC, new TabletPC(appDetails));
-		appliances.put(ApplianceNames.VACUUMCLEANER, new VacuumCleaner(appDetails));		
+	public AppliancesProvider(Criteria criteriaFromFile) {
 		
+		String objectName = criteriaFromFile.getGroupSearchName().toUpperCase();
+		Map<String, Object> appDetails = criteriaFromFile.getCriterias();
+		
+		switch (objectName) {
+		  case "LAPTOP":
+			appliance = new Laptop(appDetails);
+		    break;
+		  case "OVEN":
+			appliance = new Oven(appDetails);
+		    break;
+		  case "REFREGERATOR":
+			appliance = new Refrigerator(appDetails);
+		    break;
+		  case "SPEAKERS":
+			appliance = new Speakers(appDetails);
+		    break;
+		  case "TABLETPC":
+			appliance = new TabletPC(appDetails);
+		    break;
+		  case "VACUUMCLEANER":
+			appliance = new VacuumCleaner(appDetails);
+		    break;
+		}
 	}
 	
-	public Appliance createAppliance(Criteria criteriaFromFile) {
-		String appNameToCreate = criteriaFromFile.getGroupSearchName().toUpperCase();
-		ApplianceNames name = ApplianceNames.valueOf(appNameToCreate);
-		Appliance createdApp = appliances.get(name);
-		
-		return createdApp;
+	public Appliance createAppliance() {
+		return appliance;
 	}	
 
 }

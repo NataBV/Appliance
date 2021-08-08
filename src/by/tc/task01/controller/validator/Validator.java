@@ -9,7 +9,7 @@ public class Validator {
 		
 		Pattern pattern = Pattern.compile("^(add|find|remove)\stype="
 				+ "(null|laptop|oven|refrigerator|speakers|tabletpc|vacuumcleaner)"
-				+ "(\\s\\w+\\=\\w+)+");
+				+ "(\\s\\w+\\=\\S+)+");
 		Matcher matcher = pattern.matcher(request);
 		boolean result = matcher.matches();
 				

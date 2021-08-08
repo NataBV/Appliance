@@ -22,7 +22,7 @@ public class Main {
 		String response;
 		
 		
-		request = "find type=oven CAPACITY=4 HEIGHT=2";
+		request = "find type=oven CAPACITY=33 HEIGHT=40.0";
 	
 		response = controller.doAction(request);
 		

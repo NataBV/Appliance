@@ -17,9 +17,9 @@ public class ApplianceServiceImpl implements ApplianceService{
 
 	@Override
 	public List<Appliance> find(Criteria criteria) throws ServiceException {
-		if (!Validator.criteriaValidator(criteria)) { //TODO body
+		/*if (!Validator.criteriaValidator(criteria)) { //TODO body
 			return null;
-		}
+		}*/
 		
 		DAOFactory factory = DAOFactory.getInstance();
 		ApplianceDAO applianceDAO = factory.getApplianceDAO();
