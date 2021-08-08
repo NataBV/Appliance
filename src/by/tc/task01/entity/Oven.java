@@ -9,12 +9,6 @@ public class Oven implements Appliance{
 	private int powerCon, weight, capacity, depth;
 	private double height, width;
 	
-	/*public Oven() { 
-		parametrs = new HashMap<String, Object>();
-	}*/
-	/*public Oven(Map<String, Object> parametrs) {
-		this.parametrs = parametrs;
-	}*/
 	public Oven(int powerCon, int weight, int capacity,
 			int depth, double height, double width) { 	
 		
@@ -59,13 +53,6 @@ public class Oven implements Appliance{
 		
 		return parametrs;
 	}
-	
-	/*@Override
-	public String toLine() {
-		String result = this.getClass().getSimpleName() + " : " + this.parametrs.toString().replace("{", "").replace("}", "") ;
-		System.out.println(result);
-		return result;
-	}*/
 	
 	@Override
 	public String getClassName() {

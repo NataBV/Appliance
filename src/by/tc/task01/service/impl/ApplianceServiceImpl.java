@@ -27,6 +27,7 @@ public class ApplianceServiceImpl implements ApplianceService{
 		List<Appliance> appliances;
 		try {
 			appliances = applianceDAO.find(criteria);
+			
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
@@ -50,6 +51,25 @@ public class ApplianceServiceImpl implements ApplianceService{
 			throw new ServiceException(e);
 		}
 		
+	}
+	
+	@Override
+	public boolean add(Appliance applianceToAdd) throws ServiceException {
+		boolean result = true;
+		if (!Validator.criteriaValidator(applianceToAdd)) { //TODO body
+			return false;
+		}
+		
+		DAOFactory factory = DAOFactory.getInstance();
+		ApplianceDAO applianceDAO = factory.getApplianceDAO();
+		
+		try {
+			result = applianceDAO.add(applianceToAdd);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+		
+		return result;	
 	}
 	
 }

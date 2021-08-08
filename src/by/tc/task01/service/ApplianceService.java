@@ -8,6 +8,7 @@ import by.tc.task01.entity.criteria.Criteria;
 public interface ApplianceService {	
 	
 	List<Appliance> find(Criteria criteria) throws ServiceException;
+	boolean add (Appliance appliance) throws ServiceException;
 	void remove (Appliance appliance) throws ServiceException;
 	
 }

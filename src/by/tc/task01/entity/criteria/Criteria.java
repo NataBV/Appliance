@@ -20,6 +20,10 @@ public class Criteria {
 	public String getGroupSearchName() {
 		return groupSearchName;
 	}
+	
+	public void setGroupSearchName(String groupSearchName) {
+		this.groupSearchName = groupSearchName;
+	}
 
 	public void add(String searchCriteria, Object value) {
 		criteria.put(searchCriteria, value);

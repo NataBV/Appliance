@@ -59,11 +59,53 @@ public class FileApplianceDAO implements ApplianceDAO{
 	}
 
 	
-	@Override
-	public void add(Appliance appliance) throws DAOException {
-		// TODO body with reusing compare
+	@Override //TODO delete old file and rename new
+	public boolean add(Appliance appliance) throws DAOException {
+		boolean added = true;
+		Criteria criteria = new Criteria(appliance.getClassName(), appliance.getParametrs());
+
+		try{
+			BufferedReader bReader = new BufferedReader(new FileReader
+			("/home/artem/workspace2/layered-arch-01/src/resources/appliances_db.txt"));
+		    String textLine;
+		    
+		    // TODO check if not created
+		    File tmpFile = new File ("/home/artem/workspace2/layered-arch-01/src/resources/appTempFile.txt");
+    		if (tmpFile.createNewFile()) {
+    	        System.out.println("File created: " + tmpFile.getName());
+    	      } else {
+    	        System.out.println("File already exists.");
+    	      }
+    		BufferedWriter bWriter = new BufferedWriter(new FileWriter(tmpFile));
+    		
+		    while((textLine = bReader.readLine()) != null){
+		    	if (!textLine.equals("")) {
+		    		boolean allCriteriasMapped = compareAppliances(textLine,  criteria);
+			    	//System.out.println(allCriteriasMapped);
+			    	if (!allCriteriasMapped) {
+			    		bWriter.write(textLine + "\n");	
+			    	}else {
+			    		added = false;
+			    	}
+		    	} else {
+		    		bWriter.write(textLine + "\n");
+		    	}
+		    	 
+		    }
+		    bWriter.write(textLine + "\n"); //textLine must be appliance.toLine();
+		    
+		    bWriter.close();
+			bReader.close();
+		}
+		 catch(IOException e){		             
+			 throw new DAOException(e);
+		}
+		finally { // add
+			
+		}
+		return added;
+	} 
 		
-	}
 	
 
 	@Override // TODO replace file and tmpFile with validation

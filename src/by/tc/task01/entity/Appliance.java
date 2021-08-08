@@ -8,5 +8,5 @@ public interface Appliance {
 		
 	public String getClassName(); 
 	public Map<String, Object> getParametrs();
-	//public String toLine(); TODO check if needed
+	
 }

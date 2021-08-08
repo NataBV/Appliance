@@ -5,6 +5,7 @@ import static by.tc.task01.entity.criteria.SearchCriteria.*;
 
 import java.util.List;
 
+import by.tc.task01.controller.FrontController;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.service.ApplianceService;
@@ -14,7 +15,24 @@ import by.tc.task01.service.ServiceFactory;
 public class Main {
 
 	public static void main(String[] args) throws ServiceException {
-		List<Appliance> appliance;
+		
+		FrontController controller = new FrontController();
+		
+		String request;
+		String response;
+		
+		
+		request = "find type=oven CAPACITY=4 HEIGHT=2";
+	
+		response = controller.doAction(request);
+		
+		System.out.println(response);
+		
+	}
+		
+		
+		
+		/*List<Appliance> appliance;
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		ApplianceService service = factory.getApplianceService();
@@ -58,6 +76,6 @@ public class Main {
 		System.out.println(ovenToRemove.getParametrs().toString());
 		service.remove(ovenToRemove);
 
-	}
+	}*/
 
 }
