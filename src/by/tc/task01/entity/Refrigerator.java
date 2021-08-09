@@ -7,13 +7,14 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 
 public class Refrigerator implements Appliance{
 	
-	int powerCon, weight, freezCapacity, height, width;
-	double overallCapacity;
+	String powerCon, weight, freezCapacity, height, width, overallCapacity;
 	
-	public Refrigerator(int powCons, int weight, int freezCapacity,
-			int height, int width, double overallCapacity) {
-		
-		this.powerCon = powCons;
+
+
+	public Refrigerator(String powerCon, String weight, String freezCapacity,
+			String height, String width, String overallCapacity) {
+
+		this.powerCon = powerCon;
 		this.weight = weight;
 		this.freezCapacity = freezCapacity;
 		this.height = height;
@@ -24,12 +25,12 @@ public class Refrigerator implements Appliance{
 
 	public Refrigerator(Map<String, Object> refrDetails) { 
 		
-		this.powerCon = (int)refrDetails.get(SearchCriteria.Refrigerator.POWER_CONSUMPTION.toString());
-		this.weight = (int)refrDetails.get(SearchCriteria.Refrigerator.WEIGHT.toString());
-		this.freezCapacity = (int)refrDetails.get(SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString());
-		this.height = (int)refrDetails.get(SearchCriteria.Refrigerator.HEIGHT.toString());
-		this.width = (int)refrDetails.get(SearchCriteria.Refrigerator.WIDTH.toString());
-		this.overallCapacity = (double)refrDetails.get(SearchCriteria.Refrigerator.OVERALL_CAPACITY.toString());;
+		this.powerCon = (String)refrDetails.get(SearchCriteria.Refrigerator.POWER_CONSUMPTION.toString());
+		this.weight = (String)refrDetails.get(SearchCriteria.Refrigerator.WEIGHT.toString());
+		this.freezCapacity = (String)refrDetails.get(SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString());
+		this.height = (String)refrDetails.get(SearchCriteria.Refrigerator.HEIGHT.toString());
+		this.width = (String)refrDetails.get(SearchCriteria.Refrigerator.WIDTH.toString());
+		this.overallCapacity = (String)refrDetails.get(SearchCriteria.Refrigerator.OVERALL_CAPACITY.toString());;
 		
 		}
 	
@@ -61,14 +62,12 @@ public class Refrigerator implements Appliance{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + freezCapacity;
-		result = prime * result + height;
-		long temp;
-		temp = Double.doubleToLongBits(overallCapacity);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + powerCon;
-		result = prime * result + weight;
-		result = prime * result + width;
+		result = prime * result + ((freezCapacity == null) ? 0 : freezCapacity.hashCode());
+		result = prime * result + ((height == null) ? 0 : height.hashCode());
+		result = prime * result + ((overallCapacity == null) ? 0 : overallCapacity.hashCode());
+		result = prime * result + ((powerCon == null) ? 0 : powerCon.hashCode());
+		result = prime * result + ((weight == null) ? 0 : weight.hashCode());
+		result = prime * result + ((width == null) ? 0 : width.hashCode());
 		return result;
 	}
 
@@ -81,21 +80,38 @@ public class Refrigerator implements Appliance{
 		if (getClass() != obj.getClass())
 			return false;
 		Refrigerator other = (Refrigerator) obj;
-		if (freezCapacity != other.freezCapacity)
+		if (freezCapacity == null) {
+			if (other.freezCapacity != null)
+				return false;
+		} else if (!freezCapacity.equals(other.freezCapacity))
 			return false;
-		if (height != other.height)
+		if (height == null) {
+			if (other.height != null)
+				return false;
+		} else if (!height.equals(other.height))
 			return false;
-		if (Double.doubleToLongBits(overallCapacity) != Double.doubleToLongBits(other.overallCapacity))
+		if (overallCapacity == null) {
+			if (other.overallCapacity != null)
+				return false;
+		} else if (!overallCapacity.equals(other.overallCapacity))
 			return false;
-		if (powerCon != other.powerCon)
+		if (powerCon == null) {
+			if (other.powerCon != null)
+				return false;
+		} else if (!powerCon.equals(other.powerCon))
 			return false;
-		if (weight != other.weight)
+		if (weight == null) {
+			if (other.weight != null)
+				return false;
+		} else if (!weight.equals(other.weight))
 			return false;
-		if (width != other.width)
+		if (width == null) {
+			if (other.width != null)
+				return false;
+		} else if (!width.equals(other.width))
 			return false;
 		return true;
 	}
-	
 	
 	
 }

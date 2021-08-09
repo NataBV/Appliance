@@ -112,7 +112,7 @@ public class FileApplianceDAO implements ApplianceDAO{
 
 	@Override // TODO replace file and tmpFile with validation
 	public void remove(Criteria criteria) throws DAOException {
-		//Criteria criteria = new Criteria(appliance.getClassName(), appliance.getParametrs());
+		
 		BufferedReader bReader = null;
 		BufferedWriter bWriter = null;
 		try{
@@ -201,5 +201,3 @@ public class FileApplianceDAO implements ApplianceDAO{
 		
 }
 
-
-//you may add your own new classes

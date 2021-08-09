@@ -13,9 +13,9 @@ import by.tc.task01.service.ServiceException;
 import by.tc.task01.service.ServiceFactory;
 
 public class Main { 
-	/* TODO change variables types in entities, delete old and replace created files,
+	/* TODO  create code to delete old and replace created files ,
 	 * change line that added (possibly change row), improve creation of response,
-	 *  ? add possibility to find from all */
+	 *  ? add possibility to find from all, check code convention, layers */
 
 	public static void main(String[] args) throws ServiceException {
 		

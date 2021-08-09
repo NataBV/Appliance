@@ -6,6 +6,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import by.tc.task01.entity.Appliance;
+import by.tc.task01.entity.Laptop;
+import by.tc.task01.entity.Refrigerator;
+import by.tc.task01.entity.Speakers;
+import by.tc.task01.entity.TabletPC;
+import by.tc.task01.entity.VacuumCleaner;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.entity.criteria.SearchCriteria;
 import by.tc.task01.entity.criteria.SearchCriteria.Oven;
@@ -13,24 +18,46 @@ import by.tc.task01.entity.criteria.SearchCriteria.Oven;
 public class Validator {
 	
 	public static boolean criteriaValidator(Criteria criteria) {
-		// you may add your own code here
-		boolean found = true;
-		SearchCriteria.Oven[] ovenEnums = SearchCriteria.Oven.values();
+
+		boolean valid = true;
+		Object[] appEnums = null; 
 		Set<String> criteriaKeys = criteria.getCriterias().keySet();
 		
-		Iterator<String> iteratorOfKeys = criteriaKeys.iterator();
-		while (iteratorOfKeys.hasNext()){
-			found = false;
-			String iteratorKeyElement = iteratorOfKeys.next();
-			for(int i = 0; i < ovenEnums.length; i++) {
-				if(iteratorKeyElement.equals(ovenEnums[i].name()));{
-					found = true;
+		switch (criteria.getGroupSearchName().toUpperCase()) {
+		  case "LAPTOP":
+			appEnums = SearchCriteria.Laptop.values();
+		    break;
+		  case "OVEN":
+			appEnums = SearchCriteria.Oven.values();
+		    break;
+		  case "REFREGERATOR":
+			appEnums  = SearchCriteria.Refrigerator.values();
+		    break;
+		  case "SPEAKERS":
+			appEnums  = SearchCriteria.Speakers.values();
+		    break;
+		  case "TABLETPC":
+			appEnums  = SearchCriteria.TabletPC.values();
+		    break;
+		  case "VACUUMCLEANER":
+			appEnums  = SearchCriteria.VacuumCleaner.values();
+		    break;
+		}
+		
+		Iterator<String> iteratorOfCriteriaKeys = criteriaKeys.iterator();
+		while (iteratorOfCriteriaKeys.hasNext()){
+			valid = false;
+			String iteratorKeyElement = iteratorOfCriteriaKeys.next();
+			for(int i = 0; i < appEnums.length; i++) {
+				if(iteratorKeyElement.equals(appEnums[i].toString())){
+					valid = true;
 				}	
-			} if (found == false) {
-				return found;
+			} 
+			if (valid == false) {
+				return valid;
 			}
 		}
-		return found;
+		return valid;
 	}
 	
 	public static boolean criteriaValidator(Appliance appliance) {

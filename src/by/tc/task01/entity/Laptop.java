@@ -7,13 +7,13 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 
 public class Laptop implements Appliance{
 	
-	private int battCapacity, memoryRoom, sysMemory, dispInchs;
-	private double cpu;
-	private String os;
+	private String battCapacity, memoryRoom, sysMemory, dispInchs, cpu, os;
 	
-	public Laptop(int battCapacity, int memoryRoom, int sysMemory,
-			int dispInchs, double cpu, String os) { 
+
+	public Laptop(String battCapacity, String memoryRoom, String sysMemory,
+			String dispInchs, String cpu, String os) {
 		
+		super();
 		this.battCapacity = battCapacity;
 		this.memoryRoom = memoryRoom;
 		this.sysMemory = sysMemory;
@@ -22,14 +22,14 @@ public class Laptop implements Appliance{
 		this.os = os;
 		
 	}
-	
+
 	public Laptop(Map<String, Object> laptopDetails) { 
 		
-		this.battCapacity = (int)laptopDetails.get(SearchCriteria.Laptop.BATTERY_CAPACITY.toString());
-		this.memoryRoom = (int)laptopDetails.get(SearchCriteria.Laptop.MEMORY_ROM.toString());
-		this.sysMemory = (int)laptopDetails.get(SearchCriteria.Laptop.SYSTEM_MEMORY.toString());
-		this.dispInchs = (int)laptopDetails.get(SearchCriteria.Laptop.DISPLAY_INCHS.toString());
-		this.cpu = (double)laptopDetails.get(SearchCriteria.Laptop.CPU.toString());
+		this.battCapacity = (String)laptopDetails.get(SearchCriteria.Laptop.BATTERY_CAPACITY.toString());
+		this.memoryRoom = (String)laptopDetails.get(SearchCriteria.Laptop.MEMORY_ROM.toString());
+		this.sysMemory = (String)laptopDetails.get(SearchCriteria.Laptop.SYSTEM_MEMORY.toString());
+		this.dispInchs = (String)laptopDetails.get(SearchCriteria.Laptop.DISPLAY_INCHS.toString());
+		this.cpu = (String)laptopDetails.get(SearchCriteria.Laptop.CPU.toString());
 		this.os = (String)laptopDetails.get(SearchCriteria.Laptop.OS.toString());
 		
 	}
@@ -46,14 +46,6 @@ public class Laptop implements Appliance{
 		
 		return parametrs;
 	}
-	
-	/*@Override
-	public String toLine() {
-		String result = this.getClass().getSimpleName() + " : "
-		 + this.parametrs.toString().replace("{", "").replace("}", "") ;
-		System.out.println(result);
-		return result;
-	}*/
 	
 	@Override
 	public String getClassName() {
@@ -73,14 +65,12 @@ public class Laptop implements Appliance{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + battCapacity;
-		long temp;
-		temp = Double.doubleToLongBits(cpu);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + dispInchs;
-		result = prime * result + memoryRoom;
+		result = prime * result + ((battCapacity == null) ? 0 : battCapacity.hashCode());
+		result = prime * result + ((cpu == null) ? 0 : cpu.hashCode());
+		result = prime * result + ((dispInchs == null) ? 0 : dispInchs.hashCode());
+		result = prime * result + ((memoryRoom == null) ? 0 : memoryRoom.hashCode());
 		result = prime * result + ((os == null) ? 0 : os.hashCode());
-		result = prime * result + sysMemory;
+		result = prime * result + ((sysMemory == null) ? 0 : sysMemory.hashCode());
 		return result;
 	}
 
@@ -93,23 +83,39 @@ public class Laptop implements Appliance{
 		if (getClass() != obj.getClass())
 			return false;
 		Laptop other = (Laptop) obj;
-		if (battCapacity != other.battCapacity)
+		if (battCapacity == null) {
+			if (other.battCapacity != null)
+				return false;
+		} else if (!battCapacity.equals(other.battCapacity))
 			return false;
-		if (Double.doubleToLongBits(cpu) != Double.doubleToLongBits(other.cpu))
+		if (cpu == null) {
+			if (other.cpu != null)
+				return false;
+		} else if (!cpu.equals(other.cpu))
 			return false;
-		if (dispInchs != other.dispInchs)
+		if (dispInchs == null) {
+			if (other.dispInchs != null)
+				return false;
+		} else if (!dispInchs.equals(other.dispInchs))
 			return false;
-		if (memoryRoom != other.memoryRoom)
+		if (memoryRoom == null) {
+			if (other.memoryRoom != null)
+				return false;
+		} else if (!memoryRoom.equals(other.memoryRoom))
 			return false;
 		if (os == null) {
 			if (other.os != null)
 				return false;
 		} else if (!os.equals(other.os))
 			return false;
-		if (sysMemory != other.sysMemory)
+		if (sysMemory == null) {
+			if (other.sysMemory != null)
+				return false;
+		} else if (!sysMemory.equals(other.sysMemory))
 			return false;
 		return true;
 	}
+
 	
 	
 }

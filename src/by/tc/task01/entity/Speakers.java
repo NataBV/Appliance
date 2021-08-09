@@ -7,11 +7,12 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 
 public class Speakers implements Appliance{
 	
-	int powerCon, numOfSpeakers, cordLength;
-	String freqRange;
-		
-	public Speakers(int powerCon, int numOfSpeakers, int cordLength, String freqRange) {
-		
+	private String powerCon, numOfSpeakers, cordLength, freqRange;
+	//class with plurally title 
+	
+	public Speakers(String powerCon, String numOfSpeakers, String cordLength,
+			String freqRange) {
+
 		this.powerCon = powerCon;
 		this.numOfSpeakers = numOfSpeakers;
 		this.cordLength = cordLength;
@@ -21,13 +22,13 @@ public class Speakers implements Appliance{
 
 	public Speakers(Map<String, Object> speakersDetails) { 
 		
-		this.powerCon = (int)speakersDetails.get(SearchCriteria.Speakers.POWER_CONSUMPTION.toString());
-		this.numOfSpeakers = (int)speakersDetails.get(SearchCriteria.Speakers.NUMBER_OF_SPEAKERS.toString());
-		this.cordLength = (int)speakersDetails.get(SearchCriteria.Speakers.CORD_LENGTH.toString());
+		this.powerCon = (String)speakersDetails.get(SearchCriteria.Speakers.POWER_CONSUMPTION.toString());
+		this.numOfSpeakers = (String)speakersDetails.get(SearchCriteria.Speakers.NUMBER_OF_SPEAKERS.toString());
+		this.cordLength = (String)speakersDetails.get(SearchCriteria.Speakers.CORD_LENGTH.toString());
 		this.freqRange = (String)speakersDetails.get(SearchCriteria.Speakers.FREQUENCY_RANGE.toString());
 		
 	}
-	
+
 		@Override
 		public Map<String, Object> getParametrs() {
 			Map<String, Object> parametrs = new HashMap<String, Object>();
@@ -55,10 +56,10 @@ public class Speakers implements Appliance{
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + cordLength;
+			result = prime * result + ((cordLength == null) ? 0 : cordLength.hashCode());
 			result = prime * result + ((freqRange == null) ? 0 : freqRange.hashCode());
-			result = prime * result + numOfSpeakers;
-			result = prime * result + powerCon;
+			result = prime * result + ((numOfSpeakers == null) ? 0 : numOfSpeakers.hashCode());
+			result = prime * result + ((powerCon == null) ? 0 : powerCon.hashCode());
 			return result;
 		}
 
@@ -71,18 +72,29 @@ public class Speakers implements Appliance{
 			if (getClass() != obj.getClass())
 				return false;
 			Speakers other = (Speakers) obj;
-			if (cordLength != other.cordLength)
+			if (cordLength == null) {
+				if (other.cordLength != null)
+					return false;
+			} else if (!cordLength.equals(other.cordLength))
 				return false;
 			if (freqRange == null) {
 				if (other.freqRange != null)
 					return false;
 			} else if (!freqRange.equals(other.freqRange))
 				return false;
-			if (numOfSpeakers != other.numOfSpeakers)
+			if (numOfSpeakers == null) {
+				if (other.numOfSpeakers != null)
+					return false;
+			} else if (!numOfSpeakers.equals(other.numOfSpeakers))
 				return false;
-			if (powerCon != other.powerCon)
+			if (powerCon == null) {
+				if (other.powerCon != null)
+					return false;
+			} else if (!powerCon.equals(other.powerCon))
 				return false;
 			return true;
 		}
+
+		
 		
 }

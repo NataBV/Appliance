@@ -7,10 +7,9 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 
 public class VacuumCleaner implements Appliance{
 	
-	int powerCon, motorSpeedReg, cleanWidth;
-	String filterType, bagType, wandType;
-	
-	public VacuumCleaner(int powerCon, int motorSpeedReg, int cleanWidth,
+	private String powerCon, motorSpeedReg, cleanWidth, filterType, bagType, wandType;
+
+	public VacuumCleaner(String powerCon, String motorSpeedReg, String cleanWidth,
 			String filterType, String bagType, String wandType) {
 
 		this.powerCon = powerCon;
@@ -24,9 +23,9 @@ public class VacuumCleaner implements Appliance{
 
 	public VacuumCleaner(Map<String, Object> vCleanerDetails) {
 		
-		this.powerCon = (int)vCleanerDetails.get(SearchCriteria.VacuumCleaner.POWER_CONSUMPTION.toString());
-		this.motorSpeedReg = (int)vCleanerDetails.get(SearchCriteria.VacuumCleaner.MOTOR_SPEED_REGULATION.toString());
-		this.cleanWidth = (int)vCleanerDetails.get(SearchCriteria.VacuumCleaner.CLEANING_WIDTH.toString());
+		this.powerCon = (String)vCleanerDetails.get(SearchCriteria.VacuumCleaner.POWER_CONSUMPTION.toString());
+		this.motorSpeedReg = (String)vCleanerDetails.get(SearchCriteria.VacuumCleaner.MOTOR_SPEED_REGULATION.toString());
+		this.cleanWidth = (String)vCleanerDetails.get(SearchCriteria.VacuumCleaner.CLEANING_WIDTH.toString());
 		this.filterType = (String)vCleanerDetails.get(SearchCriteria.VacuumCleaner.FILTER_TYPE.toString());
 		this.bagType = (String)vCleanerDetails.get(SearchCriteria.VacuumCleaner.BAG_TYPE.toString());
 		this.wandType = (String)vCleanerDetails.get(SearchCriteria.VacuumCleaner.WAND_TYPE.toString());
@@ -64,10 +63,10 @@ public class VacuumCleaner implements Appliance{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bagType == null) ? 0 : bagType.hashCode());
-		result = prime * result + cleanWidth;
+		result = prime * result + ((cleanWidth == null) ? 0 : cleanWidth.hashCode());
 		result = prime * result + ((filterType == null) ? 0 : filterType.hashCode());
-		result = prime * result + motorSpeedReg;
-		result = prime * result + powerCon;
+		result = prime * result + ((motorSpeedReg == null) ? 0 : motorSpeedReg.hashCode());
+		result = prime * result + ((powerCon == null) ? 0 : powerCon.hashCode());
 		result = prime * result + ((wandType == null) ? 0 : wandType.hashCode());
 		return result;
 	}
@@ -86,16 +85,25 @@ public class VacuumCleaner implements Appliance{
 				return false;
 		} else if (!bagType.equals(other.bagType))
 			return false;
-		if (cleanWidth != other.cleanWidth)
+		if (cleanWidth == null) {
+			if (other.cleanWidth != null)
+				return false;
+		} else if (!cleanWidth.equals(other.cleanWidth))
 			return false;
 		if (filterType == null) {
 			if (other.filterType != null)
 				return false;
 		} else if (!filterType.equals(other.filterType))
 			return false;
-		if (motorSpeedReg != other.motorSpeedReg)
+		if (motorSpeedReg == null) {
+			if (other.motorSpeedReg != null)
+				return false;
+		} else if (!motorSpeedReg.equals(other.motorSpeedReg))
 			return false;
-		if (powerCon != other.powerCon)
+		if (powerCon == null) {
+			if (other.powerCon != null)
+				return false;
+		} else if (!powerCon.equals(other.powerCon))
 			return false;
 		if (wandType == null) {
 			if (other.wandType != null)
@@ -104,6 +112,5 @@ public class VacuumCleaner implements Appliance{
 			return false;
 		return true;
 	}
-	
 	
 }
