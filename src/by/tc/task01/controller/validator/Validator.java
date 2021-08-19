@@ -19,4 +19,3 @@ public class Validator {
 }
 
 
-// request = "find type=all CAPACITY=4 HEIGHT=2";

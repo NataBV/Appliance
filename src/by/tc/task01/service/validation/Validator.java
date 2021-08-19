@@ -23,7 +23,7 @@ public class Validator {
 		Object[] appEnums = null; 
 		Set<String> criteriaKeys = criteria.getCriterias().keySet();
 		
-		switch (criteria.getGroupSearchName().toUpperCase()) {
+		switch (criteria.getSearchName().toUpperCase()) {
 		  case "LAPTOP":
 			appEnums = SearchCriteria.Laptop.values();
 		    break;

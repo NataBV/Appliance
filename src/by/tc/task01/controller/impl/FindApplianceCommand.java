@@ -31,9 +31,9 @@ public class FindApplianceCommand implements Command {
 			List<Appliance> result = service.find(criteria);
 			int i = result.size();
 			if (result.size() > 0) {
-				response = "OK \n" + PrintApplianceInfo.printList(result);
+				response = "OK.The result is below: \n" + PrintApplianceInfo.printList(result);
 			}else {
-				response = "Sorry - But we don't have what you want. \n";
+				response = "Sorry. There is no data matching the request. \n";
 			}
 		} catch (ServiceException e) {
 			// log

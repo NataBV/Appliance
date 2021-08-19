@@ -8,7 +8,9 @@ public class PrintApplianceInfo {
 	
 	public static String print(Appliance appliance) {
 		String toResultAppliance = (appliance.getClassName() + " : " 
-    		    + appliance.getParametrs().toString().replace("{", "").replace("}", "").replace("," , ""));
+    		    + appliance.getParametrs().toString()
+    		    .replace("{", "").replace("}", "").replace("," , ""));
+		
     return toResultAppliance;
 	}
 	

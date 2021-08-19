@@ -25,7 +25,7 @@ public class Main {
 		String response;
 		
 		
-		request = "find type=oven CAPACITY=33 HEIGHT=40.0";
+		request = "find type=oven CAPACITY=33"; // HEIGHT=40.0";
 		response = controller.doAction(request);
 		System.out.println(response);
 		
@@ -33,7 +33,7 @@ public class Main {
 		response = controller.doAction(request);
 		System.out.println(response);
 		
-		request = "add type=oven POWER_CONSUMPTION=2000 WEIGHT=11 CAPACITY=33 DEPTH=60 HEIGHT=40.0 WIDTH=99.0";
+		request = "add type=oven CAPACITY=33 POWER_CONSUMPTION=1500 WIDTH=68.0 WEIGHT=12 HEIGHT=45.0 DEPTH=60";
 		response = controller.doAction(request);
 		System.out.println(response);
 		

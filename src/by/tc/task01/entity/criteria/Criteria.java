@@ -17,7 +17,7 @@ public class Criteria {
 		this.criteria = criteria;
 	}
 	
-	public String getGroupSearchName() {
+	public String getSearchName() {
 		return groupSearchName;
 	}
 	
